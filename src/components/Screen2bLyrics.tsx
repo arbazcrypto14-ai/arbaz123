@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Pause, SkipBack, SkipForward } from 'lucide-react';
 import { useEffect, useRef } from 'react';
 
 import { RefObject } from 'react';
@@ -142,6 +142,31 @@ export function Screen2bLyrics({ onNext, mainAudioRef, myAvatarUrl, lyricsAudioU
             <h2 className="font-bold text-[#1C1C24]/30 text-[26px] md:text-[30px] leading-[1.1] tracking-tight drop-shadow-[0_2px_4px_rgba(255,255,255,0.5)]">
               'Cause I'm cold, oh, oh
             </h2>
+
+            {/* Simulated Player Controls for Aesthetic */}
+            <div className="w-full mt-10">
+              {/* Fake Progress Bar */}
+              <div className="w-full h-1.5 bg-[#1C1C24]/10 rounded-full mb-2 overflow-hidden shadow-inner">
+                <div className="w-[45%] h-full bg-gradient-to-r from-[#1DB954] to-[#1ed760] rounded-full" />
+              </div>
+              <div className="flex justify-between text-[11px] text-[#1C1C24]/60 font-bold mb-6 px-0.5 tracking-wider">
+                <span>1:38</span>
+                <span>3:35</span>
+              </div>
+              
+              {/* Player Buttons (Non-functional) */}
+              <div className="flex items-center justify-center gap-7">
+                <div className="w-10 h-10 flex items-center justify-center text-[#1C1C24]/40 transition-colors">
+                  <SkipBack className="w-6 h-6 fill-current text-current" />
+                </div>
+                <div className="w-[60px] h-[60px] flex items-center justify-center bg-[#1C1C24] text-white rounded-full shadow-lg shadow-[#1C1C24]/20 transition-transform">
+                  <Pause className="w-7 h-7 fill-current text-current" />
+                </div>
+                <div className="w-10 h-10 flex items-center justify-center text-[#1C1C24]/40 transition-colors">
+                  <SkipForward className="w-6 h-6 fill-current text-current" />
+                </div>
+              </div>
+            </div>
           </motion.div>
         </div>
 
