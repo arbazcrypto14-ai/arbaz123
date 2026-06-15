@@ -27,11 +27,18 @@ export function Screen4Manuscript({ onNext, avatarUrl, username }: Props) {
           transition={{ delay: 0.5, duration: 1 }}
           className="flex items-center gap-4 bg-white/80 backdrop-blur-xl border border-white shadow-md rounded-full px-5 py-2.5 mb-8 z-20"
         >
-          <img 
-            src={avatarUrl} 
-            alt="Profile" 
-            className="w-10 h-10 rounded-full object-cover border-[2px] border-white shadow-sm"
-          />
+          <div className="relative">
+            <img 
+              src={avatarUrl} 
+              alt="Profile" 
+              referrerPolicy="no-referrer"
+              className="w-10 h-10 rounded-full object-cover border-[2px] border-white shadow-sm bg-gray-100 relative z-0"
+            />
+            {/* Instagram style active green dot */}
+            <div className="absolute -bottom-0.5 -right-0.5 w-[14px] h-[14px] bg-[#23D366] border-[2px] border-white rounded-full z-10 shadow-sm flex items-center justify-center">
+              <div className="w-[4px] h-[4px] bg-white/70 rounded-full animate-pulse" />
+            </div>
+          </div>
           <span className="text-charcoal/90 text-sm font-bold tracking-wide">
             {username}
           </span>
@@ -103,7 +110,7 @@ export function Screen4Manuscript({ onNext, avatarUrl, username }: Props) {
             onClick={onNext}
             className="glass-button flex items-center justify-center gap-2 px-10 py-5 text-[17px] tracking-wide rounded-full w-full max-w-[280px]"
           >
-            <span>Close App →</span>
+            <span>Let's see</span>
           </button>
         </motion.div>
       </div>

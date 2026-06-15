@@ -84,7 +84,7 @@ export function Screen3Capsule({ onNext, videoUrl }: Props) {
             onClick={handleNext}
             className="glass-button flex items-center justify-center gap-2 px-10 py-5 text-[17px] tracking-wide rounded-full w-full max-w-[280px]"
           >
-            <span>Continue motiii</span>
+            <span>Next</span>
             <ArrowRight className="w-5 h-5" />
           </motion.button>
         </div>

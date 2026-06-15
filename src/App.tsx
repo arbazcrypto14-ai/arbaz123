@@ -14,11 +14,11 @@ export default function App() {
   const audioRef = useRef<HTMLAudioElement>(null);
 
   // Default placeholders, users can easily replace these URIs.
-  const HER_AVATAR = "https://img.sanishtech.com/u/b06672da2fa6d499aeb0f15c4148ba4b.webp";
-  const HER_USERNAME = "@beltsamarrungi_";
+  const HER_AVATAR = "https://img.sanishtech.com/u/03f0aeba2e0dc3bfcc0a42ad299e46bc.webp";
+  const her_username = "@beltsamarrungi_";
   
-  const MY_AVATAR = "https://img.sanishtech.com/u/ff70b353cab2dcbd529c0c3ecc05fe62.jpg";
-  const MY_USERNAME = "@arbaz_nawazz";
+  const MY_AVATAR = "https://img.sanishtech.com/u/f3ac80ed40bff33ce6eb58a3a017c4d5.jpg";
+  const myUsername = "@arbaz_nawazz";
 
   // Relaxing ambient audio placeholder (Main app background audio)
   const AUDIO_URL = "https://actions.google.com/sounds/v1/water/rain_on_roof.ogg";
@@ -80,7 +80,7 @@ export default function App() {
 
       <AnimatePresence mode="wait">
         {step === 1 && (
-          <Screen1Entry key="s1" onNext={handleBegin} avatarUrl={HER_AVATAR} username={HER_USERNAME} />
+          <Screen1Entry key="s1" onNext={handleBegin} avatarUrl={HER_AVATAR} username={her_username} />
         )}
         {step === 2 && (
           <Screen2Ticker key="s2" onNext={handleNext} />
@@ -92,10 +92,10 @@ export default function App() {
           <Screen3Capsule key="s3" onNext={handleNext} videoUrl={VIDEO_URL} />
         )}
         {step === 5 && (
-          <Screen4Manuscript key="s4" onNext={handleNext} avatarUrl={HER_AVATAR} username={HER_USERNAME} />
+          <Screen4Manuscript key="s4" onNext={handleNext} avatarUrl={HER_AVATAR} username={her_username} />
         )}
         {step === 6 && (
-          <Screen5Final key="s5" myAvatarUrl={MY_AVATAR} myUsername={MY_USERNAME} />
+          <Screen5Final key="s5" myAvatarUrl={MY_AVATAR} myUsername={myUsername} />
         )}
       </AnimatePresence>
     </main>

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ArrowRight } from 'lucide-react';
 
@@ -8,31 +8,24 @@ interface Props {
 }
 
 const MESSAGES = [
-  { text: "Ab shayad hamari dosti pehle jaisi nahi rahi...", emoji: "🥀" },
-  { text: "Waqt aur halaat badal jaate hain.", emoji: "🍃" },
-  { text: "Lekin jo lamhe the, unki qadar hamesha rahegi.", emoji: "💫" },
-  { text: "I won't say anything about your actions anymore.", emoji: "🤐" },
-  { text: "I just hope you realize you are losing me (bit by bit)...", emoji: "💔" },
-  { text: "Before I step away completely...", emoji: "🤍" }
+  { text: "Ab shayad hamari dosti pehle jaisi nahi rahi...", emoji: "🥀", btn: "Next" },
+  { text: "Waqt aur halaat badal jaate hain.", emoji: "🍃", btn: "Let's see" },
+  { text: "Lekin jo lamhe the, unki qadar hamesha rahegi.", emoji: "💫", btn: "Next" },
+  { text: "I won't say anything about your actions anymore.", emoji: "🤐", btn: "Let's see" },
+  { text: "I just hope you realize you are losing me (bit by bit)...", emoji: "💔", btn: "Continue motiiii" },
+  { text: "Before I step away completely...", emoji: "🤍", btn: "Next" }
 ];
 
 export function Screen2Ticker({ onNext }: Props) {
   const [index, setIndex] = useState(0);
-  const [isFinished, setIsFinished] = useState(false);
 
-  useEffect(() => {
+  const handleManualNext = () => {
     if (index < MESSAGES.length - 1) {
-      const timer = setTimeout(() => {
-        setIndex(prev => prev + 1);
-      }, 3000);
-      return () => clearTimeout(timer);
+      setIndex(prev => prev + 1);
     } else {
-      const timer = setTimeout(() => {
-        setIsFinished(true);
-      }, 2500);
-      return () => clearTimeout(timer);
+      onNext();
     }
-  }, [index]);
+  };
 
   return (
     <motion.div 
@@ -65,20 +58,17 @@ export function Screen2Ticker({ onNext }: Props) {
         </div>
 
         <div className="h-20 w-full flex items-center justify-center mt-auto">
-          <AnimatePresence>
-            {isFinished && (
-              <motion.button
-                initial={{ opacity: 0, scale: 0.9, filter: 'blur(4px)' }}
-                animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
-                transition={{ duration: 0.8, type: "spring" }}
-                onClick={onNext}
-                className="glass-button flex items-center justify-center gap-2 px-10 py-5 text-[17px] tracking-wide rounded-full w-full max-w-[280px]"
-              >
-                <span>Continue</span>
-                <ArrowRight className="w-5 h-5" />
-              </motion.button>
-            )}
-          </AnimatePresence>
+          <motion.button
+            key={`btn-${index}`}
+            initial={{ opacity: 0, scale: 0.9, y: 10 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 0.5, type: "spring" }}
+            onClick={handleManualNext}
+            className="glass-button flex items-center justify-center gap-2 px-10 py-5 text-[17px] tracking-wide rounded-full w-full max-w-[280px]"
+          >
+            <span>{MESSAGES[index].btn}</span>
+            {index === MESSAGES.length - 1 && <ArrowRight className="w-5 h-5" />}
+          </motion.button>
         </div>
       </div>
     </motion.div>

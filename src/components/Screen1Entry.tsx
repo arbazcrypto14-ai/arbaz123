@@ -33,8 +33,13 @@ export function Screen1Entry({ onNext, avatarUrl, username }: Props) {
           <img 
             src={avatarUrl} 
             alt="Profile" 
+            referrerPolicy="no-referrer"
             className="relative w-36 h-36 rounded-full object-cover border-[5px] border-white scale-[0.98] shadow-inner"
           />
+          {/* Instagram style active green dot */}
+          <div className="absolute bottom-1 right-2 w-[30px] h-[30px] bg-[#23D366] border-[4px] border-white rounded-full z-10 shadow-md flex items-center justify-center">
+            <div className="w-[10px] h-[10px] bg-white/70 rounded-full animate-pulse" />
+          </div>
         </motion.div>
 
         <motion.div
@@ -43,7 +48,7 @@ export function Screen1Entry({ onNext, avatarUrl, username }: Props) {
           transition={{ delay: 0.4, duration: 0.8, type: "spring" }}
           className="bg-white/80 backdrop-blur-md px-6 py-2 rounded-full shadow-sm border border-[#7B2CBF]/10 mb-10"
         >
-          <p className="font-bold text-charcoal/80 tracking-widest text-xs uppercase">
+          <p className="font-bold text-charcoal/80 tracking-widest text-xs">
             {username}
           </p>
         </motion.div>

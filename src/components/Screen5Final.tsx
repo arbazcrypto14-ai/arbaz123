@@ -31,10 +31,15 @@ export function Screen5Final({ myAvatarUrl, myUsername }: Props) {
           <img 
             src={myAvatarUrl} 
             alt="My Profile" 
-            className="relative w-36 h-36 rounded-full object-cover border-[5px] border-white scale-[0.98] shadow-inner"
+            referrerPolicy="no-referrer"
+            className="relative w-36 h-36 rounded-full object-cover border-[5px] border-white scale-[0.98] shadow-inner bg-gray-100"
           />
+          {/* Instagram style active green dot */}
+          <div className="absolute bottom-1 right-2 w-[30px] h-[30px] bg-[#23D366] border-[4px] border-white rounded-full z-10 shadow-md flex items-center justify-center">
+            <div className="w-[10px] h-[10px] bg-white/70 rounded-full animate-pulse" />
+          </div>
           <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 bg-white/95 backdrop-blur-xl border border-[#7B2CBF]/20 rounded-full px-6 py-2 shadow-2xl">
-            <span className="text-[#7B2CBF] tracking-widest text-[13px] font-extrabold uppercase">{myUsername}</span>
+            <span className="text-[#7B2CBF] tracking-widest text-[13px] font-extrabold">{myUsername}</span>
           </div>
         </motion.div>
 

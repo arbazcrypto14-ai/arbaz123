@@ -114,9 +114,20 @@ export function Screen2bLyrics({ onNext, mainAudioRef, myAvatarUrl, lyricsAudioU
 
         {/* Top Header - Minimalist Album Info */}
         <div className="w-full flex items-center gap-4 mb-8 md:mb-10 z-10">
-          <div className="w-[52px] h-[52px] rounded-xl shadow-lg border border-white shrink-0 overflow-hidden relative flex items-center justify-center">
-            {/* User DP */}
-            <img src={myAvatarUrl} alt="Album Art" className="w-full h-full object-cover" />
+          <div className="relative">
+            <div className="w-[52px] h-[52px] rounded-xl shadow-lg border border-white shrink-0 overflow-hidden relative flex items-center justify-center bg-gray-100">
+              {/* User DP */}
+              <img 
+                src={myAvatarUrl} 
+                alt="Album Art" 
+                referrerPolicy="no-referrer"
+                className="w-full h-full object-cover" 
+              />
+            </div>
+            {/* Instagram style active green dot */}
+            <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-[#23D366] border-[2px] border-white rounded-full z-10 shadow-sm flex items-center justify-center">
+              <div className="w-[5px] h-[5px] bg-white/70 rounded-full animate-pulse" />
+            </div>
           </div>
           <div className="flex flex-col justify-center pt-1">
             <h3 className="text-charcoal font-bold text-[15px] tracking-tight leading-tight mb-0.5 drop-shadow-sm">
