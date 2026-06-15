@@ -105,7 +105,7 @@ export function Screen2bLyrics({ onNext, mainAudioRef, myAvatarUrl, lyricsAudioU
         preload="auto"
       />
 
-      <div className="glass-panel w-full max-w-sm rounded-[40px] p-8 md:p-10 flex flex-col items-center relative mb-12 min-h-[500px]">
+      <div className="glass-panel w-full max-w-sm rounded-[40px] p-6 md:p-10 flex flex-col items-center relative mb-0 min-h-[480px]">
         {/* Subtle inner top glow to emulate expensive glass edge */}
         <div className="absolute inset-x-0 top-0 h-[100px] bg-gradient-to-b from-white/90 to-transparent rounded-t-[40px] pointer-events-none" />
         
@@ -113,7 +113,7 @@ export function Screen2bLyrics({ onNext, mainAudioRef, myAvatarUrl, lyricsAudioU
         <div className="absolute inset-1 rounded-[36px] border border-white/40 pointer-events-none mix-blend-overlay" />
 
         {/* Top Header - Minimalist Album Info */}
-        <div className="w-full flex items-center gap-4 mb-12 z-10">
+        <div className="w-full flex items-center gap-4 mb-8 md:mb-10 z-10">
           <div className="w-[52px] h-[52px] rounded-xl shadow-lg border border-white shrink-0 overflow-hidden relative flex items-center justify-center">
             {/* User DP */}
             <img src={myAvatarUrl} alt="Album Art" className="w-full h-full object-cover" />
@@ -129,22 +129,22 @@ export function Screen2bLyrics({ onNext, mainAudioRef, myAvatarUrl, lyricsAudioU
         </div>
 
         {/* Main Lyrics Text */}
-        <div className="flex-1 flex flex-col justify-center w-full z-10 mb-8">
+        <div className="flex-1 flex flex-col justify-start md:justify-center w-full z-10 mb-8 mt-2">
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8, duration: 1.5, type: 'spring', bounce: 0.15 }}
             className="text-left w-full"
           >
-            <h1 className="font-extrabold text-[#1C1C24] text-[34px] md:text-[38px] leading-[1.1] tracking-tight drop-shadow-sm mb-4">
+            <h1 className="font-extrabold text-[#1C1C24] text-[28px] md:text-[34px] leading-[1.15] tracking-tight drop-shadow-sm mb-3">
               I hope you leave and don't come back
             </h1>
-            <h2 className="font-bold text-[#1C1C24]/30 text-[26px] md:text-[30px] leading-[1.1] tracking-tight drop-shadow-[0_2px_4px_rgba(255,255,255,0.5)]">
+            <h2 className="font-bold text-[#1C1C24]/30 text-[22px] md:text-[26px] leading-[1.1] tracking-tight drop-shadow-[0_2px_4px_rgba(255,255,255,0.5)]">
               'Cause I'm cold, oh, oh
             </h2>
 
             {/* Simulated Player Controls for Aesthetic */}
-            <div className="w-full mt-10">
+            <div className="w-full mt-8 md:mt-10">
               {/* Fake Progress Bar */}
               <div className="w-full h-1.5 bg-[#1C1C24]/10 rounded-full mb-2 overflow-hidden shadow-inner">
                 <div className="w-[45%] h-full bg-gradient-to-r from-[#1DB954] to-[#1ed760] rounded-full" />
@@ -155,12 +155,12 @@ export function Screen2bLyrics({ onNext, mainAudioRef, myAvatarUrl, lyricsAudioU
               </div>
               
               {/* Player Buttons (Non-functional) */}
-              <div className="flex items-center justify-center gap-7">
+              <div className="flex items-center justify-center gap-6 md:gap-7">
                 <div className="w-10 h-10 flex items-center justify-center text-[#1C1C24]/40 transition-colors">
                   <SkipBack className="w-6 h-6 fill-current text-current" />
                 </div>
-                <div className="w-[60px] h-[60px] flex items-center justify-center bg-[#1C1C24] text-white rounded-full shadow-lg shadow-[#1C1C24]/20 transition-transform">
-                  <Pause className="w-7 h-7 fill-current text-current" />
+                <div className="w-[54px] h-[54px] flex items-center justify-center bg-[#1C1C24] text-white rounded-full shadow-lg shadow-[#1C1C24]/20 transition-transform">
+                  <Pause className="w-6 h-6 fill-current text-current" />
                 </div>
                 <div className="w-10 h-10 flex items-center justify-center text-[#1C1C24]/40 transition-colors">
                   <SkipForward className="w-6 h-6 fill-current text-current" />
@@ -171,26 +171,28 @@ export function Screen2bLyrics({ onNext, mainAudioRef, myAvatarUrl, lyricsAudioU
         </div>
 
         {/* Bottom Area - Spotify Branding */}
-        <div className="w-full flex items-center justify-between z-10 mt-auto pt-6 border-t border-white/50">
+        <div className="w-full flex items-center justify-between z-10 pt-4 border-t border-white/50 mb-6">
           <div className="flex items-center gap-2.5">
             <SpotifyIcon />
             <span className="text-[#1DB954] text-[13px] font-bold tracking-widest uppercase">Spotify</span>
           </div>
           <div className="w-2.5 h-2.5 rounded-full bg-[#1DB954]/20" />
         </div>
-      </div>
 
-      {/* Tactile Button */}
-      <motion.button
-        initial={{ opacity: 0, scale: 0.9, y: 20 }}
-        animate={{ opacity: 1, scale: 1, y: 0 }}
-        transition={{ delay: 1.2, duration: 0.8, type: "spring" }}
-        onClick={handleNext}
-        className="glass-button flex items-center justify-center gap-2 px-10 py-5 text-[17px] tracking-wide rounded-full w-full max-w-[280px]"
-      >
-        <span>Continue motiii</span>
-        <ArrowRight className="w-5 h-5" />
-      </motion.button>
+        {/* Tactile Button */}
+        <div className="w-full flex items-center justify-center z-10">
+          <motion.button
+            initial={{ opacity: 0, scale: 0.9, y: 10 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ delay: 1.2, duration: 0.8, type: "spring" }}
+            onClick={handleNext}
+            className="glass-button flex items-center justify-center gap-2 px-8 py-4 md:px-10 md:py-5 text-[16px] md:text-[17px] tracking-wide rounded-full w-full max-w-[280px]"
+          >
+            <span>Continue motiii</span>
+            <ArrowRight className="w-5 h-5" />
+          </motion.button>
+        </div>
+      </div>
     </motion.div>
   );
 }
